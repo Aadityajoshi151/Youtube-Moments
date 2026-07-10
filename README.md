@@ -1,7 +1,8 @@
 <div align="center">
   <img src="icons/icon.svg" alt="YouTube Moments icon" width="96" height="96">
 
-  # YouTube Moments
+# YouTube Moments
+
 </div>
 
 A lightweight browser extension for saving exact timestamps ("moments") from YouTube videos and revisiting them later.
@@ -20,7 +21,15 @@ A lightweight browser extension for saving exact timestamps ("moments") from You
   - Export to a JSON file and import from a previously exported file
 - **Local-only storage** — moments are stored using the browser's local extension storage
 
-## Installation (temporary/dev install)
+## Screenshots
+
+![](screenshots/moments-no-content.png)
+
+![](screenshots/save-button.png)
+
+![](screenshots/moments-content.png)
+
+## Installation
 
 1. Clone this repository.
 2. Open `about:debugging#/runtime/this-firefox` in Firefox.
