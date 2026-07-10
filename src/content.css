@@ -1,0 +1,48 @@
+/* Injected "Save moment" button — sits in the YouTube action row */
+.ytm-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 18px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.05);
+  color: #0f0f0f;
+  transition: background-color 0.15s ease;
+}
+.ytm-save-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.ytm-save-btn:focus-visible {
+  outline: 2px solid #ffb84d;
+  outline-offset: 2px;
+}
+
+/* Dark theme (YouTube sets html[dark]) */
+html[dark] .ytm-save-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f1f1;
+}
+html[dark] .ytm-save-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ytm-save-btn--done {
+  background: rgba(255, 184, 77, 0.22) !important;
+  color: #8a5a00;
+}
+html[dark] .ytm-save-btn--done {
+  color: #ffce80;
+}
+
+.ytm-save-btn svg {
+  flex: 0 0 auto;
+}
