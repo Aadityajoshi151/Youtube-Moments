@@ -1,4 +1,8 @@
-# YouTube Moments
+<div align="center">
+  <img src="icons/icon.svg" alt="YouTube Moments icon" width="96" height="96">
+
+  # YouTube Moments
+</div>
 
 A lightweight browser extension for saving exact timestamps ("moments") from YouTube videos and revisiting them later.
 
