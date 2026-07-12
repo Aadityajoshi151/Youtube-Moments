@@ -166,9 +166,24 @@ function normalizeMoment(raw) {
     url,
     timestamp: Math.floor(timestamp),
     title: typeof raw.title === "string" ? raw.title : "",
+    channelName: typeof raw.channelName === "string" ? raw.channelName : "",
+    channelUrl: typeof raw.channelUrl === "string" ? raw.channelUrl : "",
     note: typeof raw.note === "string" ? raw.note : "",
     savedAt,
   };
+}
+
+// Clickable channel byline. Omitted entirely for moments saved before this
+// field existed (or imported without it).
+function renderChannel(m) {
+  if (!m.channelName) return null;
+  return el("a", {
+    className: "channel",
+    href: m.channelUrl || m.url,
+    target: "_blank",
+    rel: "noopener",
+    textContent: m.channelName,
+  });
 }
 
 function shareMessage(m) {
@@ -246,6 +261,8 @@ function renderItem(m) {
         textContent: m.title || "(untitled video)",
       })
     );
+    const channelLink = renderChannel(m);
+    if (channelLink) body.append(channelLink);
     body.append(renderEditor(m));
   } else {
     const hasNote = !!(m.note && m.note.trim());
@@ -272,6 +289,9 @@ function renderItem(m) {
         })
       );
     }
+
+    const channelLink = renderChannel(m);
+    if (channelLink) body.append(channelLink);
 
     const meta = el("div", { className: "meta" }, [
       el("span", { className: "date", textContent: formatDate(m.savedAt) }),

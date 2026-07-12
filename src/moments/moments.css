@@ -269,6 +269,20 @@ body {
   text-decoration: underline;
 }
 
+.channel {
+  display: block;
+  margin-top: 3px;
+  color: var(--faint);
+  font-size: 12.5px;
+  line-height: 1.4;
+  text-decoration: none;
+  word-break: break-word;
+}
+.channel:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .meta {
   display: flex;
   align-items: center;

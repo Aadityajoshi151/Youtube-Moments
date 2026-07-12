@@ -32,6 +32,16 @@ function getTitle() {
   return document.title.replace(/\s*-\s*YouTube\s*$/, "").trim();
 }
 
+function getChannel() {
+  const a = document.querySelector(
+    "ytd-watch-metadata ytd-channel-name a, ytd-watch-metadata #channel-name a",
+  );
+  if (a && a.textContent.trim()) {
+    return { name: a.textContent.trim(), url: a.href || "" };
+  }
+  return { name: "", url: "" };
+}
+
 // Prioritized candidate containers. We prefer the visible one inside the
 // watch metadata block (avoids hidden duplicate #top-level-buttons-computed
 // nodes that YouTube keeps elsewhere on the page).
@@ -115,6 +125,7 @@ async function handleSaveClick(e) {
   const timestamp = Math.floor(video.currentTime || 0);
   const videoId = getVideoId();
   const title = getTitle();
+  const channel = getChannel();
   const url = `https://www.youtube.com/watch?v=${videoId}&t=${timestamp}s`;
 
   // Optional note. Cancel (null) aborts the whole save.
@@ -129,6 +140,8 @@ async function handleSaveClick(e) {
     url,
     timestamp,
     title,
+    channelName: channel.name,
+    channelUrl: channel.url,
     note: note.trim(),
     savedAt: Date.now(),
   };
