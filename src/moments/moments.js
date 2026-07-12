@@ -171,6 +171,10 @@ function normalizeMoment(raw) {
   };
 }
 
+function shareMessage(m) {
+  return `Found this moment worth sharing. Click the link and it'll jump right to that spot in the video.\n${m.url}`;
+}
+
 // timecode chip — links straight to the video at the saved second.
 // `overlay` styles it as a badge sitting on top of the thumbnail.
 function makeTimecode(m, overlay) {
@@ -272,6 +276,7 @@ function renderItem(m) {
     const meta = el("div", { className: "meta" }, [
       el("span", { className: "date", textContent: formatDate(m.savedAt) }),
       makeAction("copy", m.id, "Copy link", "copy"),
+      makeAction("share", m.id, "Share", "share"),
       makeAction("edit", m.id, hasNote ? "Edit label" : "Add label", hasNote ? "edit" : "add"),
       makeAction("delete", m.id, "Delete", "delete", true),
     ]);
@@ -428,6 +433,24 @@ listEl.addEventListener("click", async (e) => {
     } catch (err) {
       console.error("Copy failed", err);
       window.prompt("Copy this link:", m.url);
+    }
+  } else if (action === "share") {
+    const m = allMoments.find((x) => x.id === id);
+    if (!m) return;
+    const text = shareMessage(m);
+    try {
+      await navigator.clipboard.writeText(text);
+      const label = btn.querySelector(".link-btn__label");
+      const original = label ? label.textContent : "";
+      if (label) label.textContent = "Copied";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        if (label) label.textContent = original;
+        btn.classList.remove("copied");
+      }, 1200);
+    } catch (err) {
+      console.error("Copy failed", err);
+      window.prompt("Copy this message:", text);
     }
   } else if (action === "delete") {
     const m = allMoments.find((x) => x.id === id);
