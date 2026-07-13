@@ -95,7 +95,7 @@ function render() {
     pagerEl.hidden = true;
     showEmpty(
       "No moments yet",
-      'Pause any YouTube video and hit <code>Save moment</code> below it. Your saved points show up here.'
+      'On any YouTube video, right-click below the player and choose <code>Save moment</code>. Your saved points show up here.'
     );
     return;
   }

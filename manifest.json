@@ -14,7 +14,7 @@
     "48": "icons/icon.svg",
     "96": "icons/icon.svg"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "contextMenus"],
   "action": {
     "default_title": "YouTube Moments",
     "default_icon": {
@@ -24,6 +24,14 @@
   },
   "background": {
     "scripts": ["src/background.js"]
+  },
+  "commands": {
+    "save-moment": {
+      "suggested_key": {
+        "default": "Alt+Shift+Space"
+      },
+      "description": "Save the current YouTube moment"
+    }
   },
   "content_scripts": [
     {
