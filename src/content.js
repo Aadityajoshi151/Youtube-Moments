@@ -81,7 +81,7 @@ function makeButton() {
   btn.setAttribute("aria-label", "Save this moment");
   btn.innerHTML =
     '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">' +
-    '<path fill="currentColor" d="M8 5v14l11-7z"/></svg>' +
+    '<path fill="#FFB84D" d="M8 5v14l11-7z"/></svg>' +
     '<span class="ytm-save-btn__label">Save moment</span>';
   btn.addEventListener("click", handleSaveClick);
   return btn;
