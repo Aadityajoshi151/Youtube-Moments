@@ -10,7 +10,7 @@ const importEl = document.getElementById("import");
 const importFileEl = document.getElementById("importFile");
 const statusEl = document.getElementById("status");
 
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 10;
 
 let allMoments = [];
 let query = "";
@@ -75,7 +75,7 @@ function filtered() {
     ? allMoments.filter(
         (m) =>
           (m.note || "").toLowerCase().includes(q) ||
-          (m.title || "").toLowerCase().includes(q)
+          (m.title || "").toLowerCase().includes(q),
       )
     : allMoments.slice();
   items.sort((a, b) => b.savedAt - a.savedAt);
@@ -95,13 +95,16 @@ function render() {
     pagerEl.hidden = true;
     showEmpty(
       "No moments yet",
-      'Pause any YouTube video and hit <code>Save moment</code> below it. Your saved points show up here.'
+      "Pause any YouTube video and hit <code>Save moment</code> below it. Your saved points show up here.",
     );
     return;
   }
   if (items.length === 0) {
     pagerEl.hidden = true;
-    showEmpty("No matches", "Nothing matches your search. Try different words.");
+    showEmpty(
+      "No matches",
+      "Nothing matches your search. Try different words.",
+    );
     return;
   }
 
@@ -158,7 +161,9 @@ function normalizeMoment(raw) {
     }
   }
 
-  const savedAt = Number.isFinite(Number(raw.savedAt)) ? Number(raw.savedAt) : Date.now();
+  const savedAt = Number.isFinite(Number(raw.savedAt))
+    ? Number(raw.savedAt)
+    : Date.now();
 
   return {
     id: typeof raw.id === "string" && raw.id ? raw.id : newId(),
@@ -259,7 +264,7 @@ function renderItem(m) {
         target: "_blank",
         rel: "noopener",
         textContent: m.title || "(untitled video)",
-      })
+      }),
     );
     const channelLink = renderChannel(m);
     if (channelLink) body.append(channelLink);
@@ -286,7 +291,7 @@ function renderItem(m) {
           target: "_blank",
           rel: "noopener",
           textContent: m.title || "(untitled video)",
-        })
+        }),
       );
     }
 
@@ -297,7 +302,12 @@ function renderItem(m) {
       el("span", { className: "date", textContent: formatDate(m.savedAt) }),
       makeAction("copy", m.id, "Copy link", "copy"),
       makeAction("share", m.id, "Share", "share"),
-      makeAction("edit", m.id, hasNote ? "Edit label" : "Add label", hasNote ? "edit" : "add"),
+      makeAction(
+        "edit",
+        m.id,
+        hasNote ? "Edit label" : "Add label",
+        hasNote ? "edit" : "add",
+      ),
       makeAction("delete", m.id, "Delete", "delete", true),
     ]);
     body.append(meta);
@@ -316,7 +326,7 @@ function makeAction(action, id, label, iconName, danger = false) {
   btn.dataset.id = id;
   btn.append(
     makeIcon(iconName),
-    el("span", { className: "link-btn__label", textContent: label })
+    el("span", { className: "link-btn__label", textContent: label }),
   );
   return btn;
 }
@@ -387,7 +397,7 @@ function renderPager(totalPages) {
     pagerButton("‹ Prev", {
       disabled: currentPage === 1,
       onClick: () => goTo(currentPage - 1),
-    })
+    }),
   );
 
   for (const p of pageWindow(currentPage, totalPages)) {
@@ -398,7 +408,7 @@ function renderPager(totalPages) {
         pagerButton(String(p), {
           current: p === currentPage,
           onClick: () => goTo(p),
-        })
+        }),
       );
     }
   }
@@ -407,7 +417,7 @@ function renderPager(totalPages) {
     pagerButton("Next ›", {
       disabled: currentPage === totalPages,
       onClick: () => goTo(currentPage + 1),
-    })
+    }),
   );
 }
 
@@ -474,7 +484,12 @@ listEl.addEventListener("click", async (e) => {
     }
   } else if (action === "delete") {
     const m = allMoments.find((x) => x.id === id);
-    const label = m && m.note ? `“${m.note}”` : m && m.title ? `“${m.title}”` : "this moment";
+    const label =
+      m && m.note
+        ? `“${m.note}”`
+        : m && m.title
+          ? `“${m.title}”`
+          : "this moment";
     if (!window.confirm(`Delete ${label}?`)) return;
     allMoments = allMoments.filter((x) => x.id !== id);
     if (editingId === id) editingId = null;
@@ -566,7 +581,8 @@ importFileEl.addEventListener("change", async () => {
   }
 
   const parts = [`Imported ${added}`];
-  if (duplicates) parts.push(`${duplicates} duplicate${duplicates === 1 ? "" : "s"} skipped`);
+  if (duplicates)
+    parts.push(`${duplicates} duplicate${duplicates === 1 ? "" : "s"} skipped`);
   if (invalid) parts.push(`${invalid} invalid skipped`);
   showStatus(parts.join(" · "), added > 0 ? "ok" : "err");
 });
