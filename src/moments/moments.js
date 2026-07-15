@@ -95,7 +95,11 @@ function render() {
     pagerEl.hidden = true;
     showEmpty(
       "No moments yet",
-      "Pause any YouTube video and hit <code>Save moment</code> below it. Your saved points show up here.",
+      el("p", {}, [
+        "Pause any YouTube video and hit ",
+        el("code", { textContent: "Save moment" }),
+        " below it. Your saved points show up here.",
+      ]),
     );
     return;
   }
@@ -103,7 +107,7 @@ function render() {
     pagerEl.hidden = true;
     showEmpty(
       "No matches",
-      "Nothing matches your search. Try different words.",
+      el("p", { textContent: "Nothing matches your search. Try different words." }),
     );
     return;
   }
@@ -124,9 +128,9 @@ function render() {
   renderPager(totalPages);
 }
 
-function showEmpty(title, html) {
+function showEmpty(title, body) {
   emptyEl.hidden = false;
-  emptyEl.innerHTML = `<h2>${title}</h2><p>${html}</p>`;
+  emptyEl.replaceChildren(el("h2", { textContent: title }), body);
 }
 
 function videoIdOf(m) {
