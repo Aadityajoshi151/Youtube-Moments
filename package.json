@@ -1,0 +1,13 @@
+{
+  "name": "youtube-moments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Save exact moments (timestamps) from YouTube videos and revisit them later.",
+  "scripts": {
+    "lint": "npx web-ext lint",
+    "build": "npx web-ext build --overwrite-dest"
+  },
+  "webExt": {
+    "ignoreFiles": ["screenshots/**"]
+  }
+}
