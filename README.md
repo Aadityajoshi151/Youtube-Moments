@@ -25,10 +25,13 @@ A lightweight browser extension for saving exact timestamps ("moments") from You
 ## Screenshots
 
 ![](screenshots/moments-no-content.png)
+_Moments screen (empty)_
 
 ![](screenshots/save-button.png)
+_Save moments button_
 
 ![](screenshots/moments-content.png)
+_Moments screen (with moment)_
 
 ## Installation
 
