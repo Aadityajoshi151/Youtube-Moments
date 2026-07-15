@@ -4,7 +4,7 @@
   "private": true,
   "description": "Save exact moments (timestamps) from YouTube videos and revisit them later.",
   "scripts": {
-    "lint": "npx web-ext lint",
+    "lint": "npx web-ext lint --warnings-as-errors",
     "build": "npx web-ext build --overwrite-dest"
   },
   "webExt": {
