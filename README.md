@@ -18,6 +18,7 @@ A lightweight browser extension for saving exact timestamps ("moments") from You
   - Search across titles and notes
   - Pagination for large collections
   - Inline editing and deletion of saved moments
+  - Share a moment as a ready-made message (for WhatsApp, Slack, etc.), or just copy the link
   - Export to a JSON file and import from a previously exported file
 - **Local-only storage** — moments are stored using the browser's local extension storage
 
@@ -30,6 +31,8 @@ A lightweight browser extension for saving exact timestamps ("moments") from You
 ![](screenshots/moments-content.png)
 
 ## Installation
+
+Requires Firefox 140 or later.
 
 1. Clone this repository.
 2. Open `about:debugging#/runtime/this-firefox` in Firefox.
@@ -48,3 +51,10 @@ The extension icon will appear in the toolbar. Click it at any time to open the 
 ## Permissions
 
 - `storage` — used to persist saved moments locally in the browser.
+
+## Building a release
+
+```
+npm run lint   # validates manifest.json and source with web-ext
+npm run build  # packages the extension into web-ext-artifacts/*.zip
+```
