@@ -3,6 +3,8 @@
 
 # YouTube Moments
 
+![Add to Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)
+
 </div>
 
 A lightweight browser extension for saving exact timestamps ("moments") from YouTube videos and revisiting them later.
@@ -37,12 +39,16 @@ _Moments screen (with moment)_
 
 Requires Firefox 140 or later.
 
+The easiest way to install is from the official listing: [addons.mozilla.org/firefox/addon/youtube-moments](https://addons.mozilla.org/en-US/firefox/addon/youtube-moments/).
+
+Once installed, the extension icon appears in the toolbar. Click it at any time to open the Moments page. Pin the icon on the toolbar for easier access.
+
+### Installing from source (development)
+
 1. Clone this repository.
 2. Open `about:debugging#/runtime/this-firefox` in Firefox.
 3. Click **Load Temporary Add-on…**.
 4. Select the `manifest.json` file from this repository.
-
-The extension icon will appear in the toolbar. Click it at any time to open the Moments page. Pin the icon on the toolbar for easier access.
 
 ## Usage
 
