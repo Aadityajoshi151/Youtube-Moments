@@ -117,6 +117,12 @@ body {
   border-color: var(--accent);
   color: var(--accent);
 }
+.btn-outline:disabled {
+  cursor: default;
+  opacity: 0.45;
+  border-color: var(--line-strong);
+  color: var(--faint);
+}
 
 /* transient import/export feedback */
 .status {

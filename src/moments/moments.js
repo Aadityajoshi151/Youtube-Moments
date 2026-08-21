@@ -6,6 +6,7 @@ const emptyEl = document.getElementById("empty");
 const countEl = document.getElementById("count");
 const searchEl = document.getElementById("search");
 const exportEl = document.getElementById("export");
+const randomEl = document.getElementById("random");
 const importEl = document.getElementById("import");
 const importFileEl = document.getElementById("importFile");
 const statusEl = document.getElementById("status");
@@ -88,6 +89,7 @@ function render() {
   const total = allMoments.length;
 
   countEl.textContent = total === 0 ? "No moments yet" : `${total} saved`;
+  randomEl.disabled = total === 0;
 
   listEl.innerHTML = "";
 
@@ -518,6 +520,12 @@ function showStatus(text, kind) {
     statusEl.hidden = true;
   }, 6000);
 }
+
+randomEl.addEventListener("click", () => {
+  if (allMoments.length === 0) return;
+  const m = allMoments[Math.floor(Math.random() * allMoments.length)];
+  window.open(m.url, "_blank", "noopener");
+});
 
 exportEl.addEventListener("click", () => {
   const data = JSON.stringify(allMoments, null, 2);
