@@ -109,7 +109,9 @@ function render() {
     pagerEl.hidden = true;
     showEmpty(
       "No matches",
-      el("p", { textContent: "Nothing matches your search. Try different words." }),
+      el("p", {
+        textContent: "Nothing matches your search. Try different words.",
+      }),
     );
     return;
   }

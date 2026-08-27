@@ -10,10 +10,14 @@
   --accent: #ffb84d;
   --accent-soft: rgba(255, 184, 77, 0.14);
   --danger: #ff6b6b;
-  --mono: ui-monospace, "SF Mono", "Cascadia Code", "Cascadia Mono", Menlo,
-    Consolas, monospace;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+  --info: #5b9dff;
+  --success: #4ade80;
+  --mono:
+    ui-monospace, "SF Mono", "Cascadia Code", "Cascadia Mono", Menlo, Consolas,
+    monospace;
+  --sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 * {
@@ -110,7 +114,9 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
   white-space: nowrap;
 }
 .btn-outline:hover {
@@ -317,9 +323,18 @@ body {
   cursor: pointer;
 }
 .link-btn:hover {
-  color: var(--text);
+  opacity: 0.8;
 }
-.link-btn.danger:hover {
+.link-btn[data-action="copy"] {
+  color: var(--info);
+}
+.link-btn[data-action="share"] {
+  color: var(--success);
+}
+.link-btn[data-action="edit"] {
+  color: var(--accent);
+}
+.link-btn.danger {
   color: var(--danger);
 }
 .link-btn.copied {
@@ -396,7 +411,10 @@ body {
   font-family: var(--sans);
   font-size: 14px;
   cursor: pointer;
-  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 .pager__btn:hover:not(:disabled):not(.pager__btn--current) {
   border-color: var(--accent);
