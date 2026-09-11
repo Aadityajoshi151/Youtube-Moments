@@ -10,8 +10,10 @@ const randomEl = document.getElementById("random");
 const importEl = document.getElementById("import");
 const importFileEl = document.getElementById("importFile");
 const statusEl = document.getElementById("status");
+const pageSizeEl = document.getElementById("pageSize");
 
-const PAGE_SIZE = 10;
+let PAGE_SIZE = 10;
+const ALL_PAGE_SIZE = Number.MAX_SAFE_INTEGER;
 
 let allMoments = [];
 let query = "";
@@ -61,8 +63,13 @@ function makeIcon(name, extraClass) {
 }
 
 async function loadMoments() {
-  const { moments = [] } = await browser.storage.local.get("moments");
+  const { moments = [], pageSize = 10 } = await browser.storage.local.get([
+    "moments",
+    "pageSize",
+  ]);
   allMoments = moments;
+  PAGE_SIZE = pageSize === "all" ? ALL_PAGE_SIZE : pageSize;
+  pageSizeEl.value = pageSize === "all" ? "all" : String(pageSize);
   render();
 }
 
@@ -509,6 +516,14 @@ listEl.addEventListener("click", async (e) => {
 searchEl.addEventListener("input", () => {
   query = searchEl.value;
   currentPage = 1;
+  render();
+});
+
+pageSizeEl.addEventListener("change", async () => {
+  const raw = pageSizeEl.value;
+  PAGE_SIZE = raw === "all" ? ALL_PAGE_SIZE : Number(raw);
+  currentPage = 1;
+  await browser.storage.local.set({ pageSize: raw === "all" ? "all" : Number(raw) });
   render();
 });
 

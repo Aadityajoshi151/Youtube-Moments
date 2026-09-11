@@ -4,11 +4,16 @@
   "private": true,
   "description": "Save exact moments (timestamps) from YouTube videos and revisit them later.",
   "scripts": {
-    "lint": "npx web-ext lint --warnings-as-errors",
-    "build": "npx web-ext build --overwrite-dest",
-    "dev": "npx web-ext run"
+    "lint": "web-ext lint --warnings-as-errors",
+    "build": "web-ext build --overwrite-dest",
+    "dev": "web-ext run"
   },
   "webExt": {
-    "ignoreFiles": ["screenshots/**"]
+    "ignoreFiles": [
+      "screenshots/**"
+    ]
+  },
+  "devDependencies": {
+    "web-ext": "^10.6.0"
   }
 }
