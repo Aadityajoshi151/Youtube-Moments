@@ -33,10 +33,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Full-width: the list grid below fills the extra space with more columns
+   rather than stretching cards. */
 .wrap {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 40px 24px 96px;
+  padding: 40px clamp(16px, 3vw, 48px) 96px;
 }
 
 /* ---------- Header ---------- */
@@ -170,8 +170,9 @@ body {
 }
 
 /* ---------- List ---------- */
-/* 2-up grid on desktop, 1-up on narrow windows. 560px is the narrowest a card
-   can get before its date + action links wrap onto a second line. */
+/* Adds a column whenever another 560px card fits (3 on a 1920px screen, 2 on
+   a laptop, 1 on narrow windows). Right at the 560px minimum, a card's date +
+   action links can wrap onto a second line. */
 .list {
   list-style: none;
   margin: 16px 0 0;
