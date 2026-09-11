@@ -17,7 +17,7 @@ A lightweight browser extension for saving exact timestamps ("moments") from You
 
 - **Save moment** - adds a button to the action row under any YouTube video. Clicking it captures the current playback timestamp and lets you attach an optional note.
 - **Moments page** - click the toolbar icon to open a dedicated full-page view of everything you've saved, with:
-  - Search across titles and notes
+  - Search across notes, video titles, and channel names
   - Pagination for large collections
   - Inline editing and deletion of saved moments
   - Share a moment as a ready-made message (for WhatsApp, Slack, etc.), or just copy the link
