@@ -33,10 +33,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Full-width: the list grid below fills the extra space with more columns
+   rather than stretching cards. */
 .wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 40px 24px 96px;
+  padding: 40px clamp(16px, 3vw, 48px) 96px;
 }
 
 /* ---------- Header ---------- */
@@ -170,10 +170,16 @@ body {
 }
 
 /* ---------- List ---------- */
+/* Adds a column whenever another 560px card fits (3 on a 1920px screen, 2 on
+   a laptop, 1 on narrow windows). Right at the 560px minimum, a card's date +
+   action links can wrap onto a second line. */
 .list {
   list-style: none;
-  margin: 0;
+  margin: 16px 0 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(560px, 100%), 1fr));
+  gap: 12px;
 }
 
 .item {
@@ -182,11 +188,16 @@ body {
   grid-template-columns: 128px 1fr;
   gap: 16px;
   padding: 18px 18px 18px 16px;
-  border-bottom: 1px solid var(--line);
-  transition: background-color 0.15s ease;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 .item:hover {
   background: var(--panel-hover);
+  border-color: var(--line-strong);
 }
 /* playhead accent — the signature: a timeline marker growing on hover */
 .item::before {
