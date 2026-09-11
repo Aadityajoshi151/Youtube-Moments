@@ -83,7 +83,8 @@ function filtered() {
     ? allMoments.filter(
         (m) =>
           (m.note || "").toLowerCase().includes(q) ||
-          (m.title || "").toLowerCase().includes(q),
+          (m.title || "").toLowerCase().includes(q) ||
+          (m.channelName || "").toLowerCase().includes(q),
       )
     : allMoments.slice();
   items.sort((a, b) => b.savedAt - a.savedAt);
