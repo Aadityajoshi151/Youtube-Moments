@@ -625,4 +625,9 @@ browser.storage.onChanged.addListener((changes, area) => {
   }
 });
 
+// Footer version is read from manifest.json, so bumping it there is the only
+// change needed per release.
+document.getElementById("version").textContent =
+  "v" + browser.runtime.getManifest().version;
+
 loadMoments();
