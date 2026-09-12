@@ -23,6 +23,7 @@
   "permissions": ["storage"],
   "action": {
     "default_title": "YouTube Moments",
+    "default_area": "navbar",
     "default_icon": {
       "48": "icons/icon.svg",
       "96": "icons/icon.svg"
