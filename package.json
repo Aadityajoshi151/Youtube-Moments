@@ -10,7 +10,8 @@
   },
   "webExt": {
     "ignoreFiles": [
-      "screenshots/**"
+      "screenshots/**",
+      "release-instructions.md"
     ]
   },
   "devDependencies": {
