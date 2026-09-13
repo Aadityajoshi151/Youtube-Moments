@@ -3,7 +3,7 @@
 
 # YouTube Moments
 
-![Add to Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)
+[![Firefox Add-on](screenshots/firefox-badge.png)](https://addons.mozilla.org/en-US/firefox/addon/youtube-moments/)
 
 </div>
 
@@ -33,7 +33,7 @@ _Moments screen (empty)_
 _Save moments button_
 
 ![](screenshots/moments-content.png)
-_Moments screen (with moment)_
+_Moments screen (with moments)_
 
 ## Installation
 
